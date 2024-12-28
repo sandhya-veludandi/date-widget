@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://thumbs.dreamstime.com/b/brown-paper-bag-texture-as-background-top-view-brown-paper-bag-texture-as-background-top-view-137853691.jpg');
+        }
+        .datetime {
+            text-align: left;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        .datetime h1 {
+            margin: 0 0 10px;
+            font-size: 3rem;
+        }
+        .datetime p {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .alumni-sans-pinstripe-regular {
+          font-family: "Alumni Sans Pinstripe", serif;
+          font-weight: 400;
+          font-style: normal;
+        }
+
+        .alumni-sans-pinstripe-regular-italic {
+          font-family: "Alumni Sans Pinstripe", serif;
+          font-weight: 400;
+          font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="datetime alumni-sans-pinstripe-regular">
+        <h1 id="time"></h1>
+        <p id="time"></p>
+        <p id="date"></p>
+    </div>
+
+    <script>
+        function updateTimeAndDate() {
+            const now = new Date();
+
+            // Format time as HH:MM:SS
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            // Format date as YYYY-MM-DD
+            const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById('time').textContent = `${time}`;
+            document.getElementById('date').textContent = `${date}`;
+        }
+
+        // Update the time and date every second
+        setInterval(updateTimeAndDate, 1000);
+
+        // Initialize on page load
+        updateTimeAndDate();
+    </script>
+</body>
+</html>
